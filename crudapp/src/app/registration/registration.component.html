@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  
+    <div class="col-md-5">
+      <div class="well">
+      <h2 class="text-center"> Registration Form</h2>
+
+      <form [formGroup]="ngForm" (ngSubmit)=onSubmit(ngForm.value)>
+        <div class="form-group">
+          <label for="fname">First Name:</label>
+          <input type="text" class="form-control" id="fname" formControlName="fname">
+        </div>
+
+        <div class="form-group">
+          <label for="lname">Last Name:</label>
+          <input type="text" class="form-control" id="lname" formControlName="lname">
+        </div>
+
+        <div class="form-group">
+          <label for="department">Department:</label>
+          <input type="text" class="form-control" id="department" formControlName="department">
+        </div>
+
+        <div class="form-group">
+          <label for="contact_no">Contact No.:</label>
+          <input type="number" class="form-control" id="contact_no" formControlName="contact_no">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email address:</label>
+          <input type="email" class="form-control" id="email" formControlName="email">
+        </div>
+        <input type="hidden" class="form-control" name="_id" formControlName="_id">
+
+        <button type="submit" class="btn btn-warning">Submit</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h1 class="text-center">Users Data</h1>
+
+    <!-- <div class="table-wrap"> -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Index</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Department</th>
+            <th>Contact No</th>
+            <th>Email Id</th>
+            <th>Operations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{user.fname}}</td>
+            <td>{{user.lname}}</td>
+            <td>{{user.department}}</td>
+            <td>{{user.contact_no}}</td>
+            <td>{{user.email}}</td>
+            <td><i class="glyphicon glyphicon-edit" (click)="onEdit(user._id, user)"></i>
+              <i class="glyphicon glyphicon-trash" (click)="onDelete(user._id)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <!-- </div> -->
+  </div>
+
+</div>
